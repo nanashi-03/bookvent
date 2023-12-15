@@ -1,0 +1,15 @@
+.booklist {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.book {
+    /* display: grid; */
+    flex: 0 0 calc(50% - 30px);
+    /* grid-template-columns: repeat(2, minmax(300px, 1fr));
+    gap: 20px;
+    justify-content: center; */
+}
+
+
