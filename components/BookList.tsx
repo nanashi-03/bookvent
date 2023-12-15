@@ -26,7 +26,7 @@ export default async function BookList({ books } : {books:any[]}) {
 
 
     try {
-        const loadedString = fs.readFileSync('first6.json', 'utf8');
+        const loadedString = fs.readFileSync('./first6.json', 'utf8');
         if (loadedString) {
             first6 = JSON.parse(loadedString);
         }
@@ -35,7 +35,7 @@ export default async function BookList({ books } : {books:any[]}) {
         first6 = books.slice(0, 6);
         shuffleArray(first6);
         const jsonString = JSON.stringify(first6, null, 2);
-        fs.writeFileSync('first6.json', jsonString);
+        fs.writeFileSync('./first6.json', jsonString);
     }
 
     return (
