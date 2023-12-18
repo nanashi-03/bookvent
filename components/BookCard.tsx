@@ -63,7 +63,7 @@ const BookCard: React.FC<BookCardProps> = ({ id, title, url}) => {
     let times = formatTime(countdown);
 
     return (
-        <Link className="bg-green-700 rounded-md text-foreground" href={url} style={{ ...cardStyle, ...(countdown > 0 ? disabledLinkStyle : {}) }} onClick={(e) => countdown > 0 && e.preventDefault()}>
+        <Link className="bg-foreground hover:bg-btn-background-hover rounded-md text-btn-background" href={url} style={{ ...cardStyle, ...(countdown > 0 ? disabledLinkStyle : {}) }} onClick={(e) => countdown > 0 && e.preventDefault()}>
             {!showTitle && <h3 suppressHydrationWarning={true}>Come back after {times.days} days, {times.hours} hours, {times.minutes} minutes and {times.seconds} seconds</h3>}
             {showTitle && <h3>{title}</h3>}
             {/* <h3>{title}</h3> */}
