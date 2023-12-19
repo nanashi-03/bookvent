@@ -24,18 +24,22 @@ export default async function BookList({ books } : {books:any[]}) {
     let first6; 
     const final = books[6];
 
-
-    try {
-        const loadedString = fs.readFileSync('/tmp/first6.json', 'utf8');
-        if (loadedString) {
-            first6 = JSON.parse(loadedString);
+    if (fs.existsSync('first6.json')) {
+        try {
+            const loadedString = fs.readFileSync('first6.json', 'utf8');
+            if (loadedString) {
+                first6 = JSON.parse(loadedString);
+            }
+        } catch (error) {
+            console.error('Error reading or parsing file:', error);
         }
-    } catch (error) {
-        console.error('Error reading or parsing file:', error);
+    } 
+
+    if (!first6) {
         first6 = books.slice(0, 6);
         shuffleArray(first6);
         const jsonString = JSON.stringify(first6, null, 2);
-        fs.writeFileSync('/tmp/first6.json', jsonString);
+        fs.writeFileSync('first6.json', jsonString);
     }
 
     return (
